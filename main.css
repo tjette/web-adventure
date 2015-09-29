@@ -1,0 +1,10 @@
+.cell {
+	height: 150px;
+	width: 150px;
+	color: purple;
+	border-style: solid;
+	border-color: purple;
+}
+.ttt-grid {
+	margin: auto;
+}
