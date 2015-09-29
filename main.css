@@ -1,11 +1,17 @@
 .cell {
-	height: 150px;
-	width: 150px;
+	height: 100px;
+	width: 100px;
 	color: purple;
 	border-style: solid;
 	border-color: purple;
+	overflow: hidden;
+	align-content: center;
 }
 .ttt-grid {
 	left: auto
+	right: auto;
+}
+​.dpad {
+	left: auto;
 	right: auto;
 }
