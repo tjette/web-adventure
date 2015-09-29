@@ -6,5 +6,6 @@
 	border-color: purple;
 }
 .ttt-grid {
-	margin: auto;
+	left: auto
+	right: auto;
 }
