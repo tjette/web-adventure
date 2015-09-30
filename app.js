@@ -18,26 +18,13 @@ var target = function(){
 var movAbe = function(){
 	document.getElementById(yCoord.toString() + xCoord.toString()).innerHTML = "<img src=\"small_abe.png\"></img>";
 };
-var hideAbeDown = function(){
-	document.getElementById((yCoord - 1).toString() + xCoord.toString()).innerHTML = "";
-};
 
-var hideAbeUp = function(){
-	document.getElementById((yCoord + 1).toString() + xCoord.toString()).innerHTML = "";
-};
+//refactoring hideAbe
 
-var hideAbeLeft = function(){
-	document.getElementById(yCoord.toString() + (xCoord + 1).toString()).innerHTML = "";
-};
+var hideAbe = function (xChange, yChange) {
+	document.getElementById((yCoord + yChange).toString() + (xCoord + xChange).toString()).innerHTML = "";
+}
 
-var hideAbeRight = function(){
-	document.getElementById(yCoord.toString() + (xCoord - 1).toString()).innerHTML = "";
-};
-
-//Adding a function to delete abe from the current cell when 'reset' is pressed
-var hideAbeNow = function(){
-	document.getElementById(yCoord.toString() + xCoord.toString()).innerHTML = "";
-};
 
 movAbe();
 target();
@@ -47,9 +34,9 @@ target();
 function movDown() {
 	
 	
-	if(xCoord === endX && yCoord === (endY - 1)) {
+	if(xCoord === endX && yCoord === (endY -1)) {
         yCoord++;
-        hideAbeDown();	
+        hideAbe(0, -1);	
         killAbe();
         alert("Whuuthaa!!??");
 	}
@@ -58,14 +45,16 @@ function movDown() {
     }
         else {
         yCoord++;
-		hideAbeDown();
+		hideAbe(0, -1);
 		movAbe();
 	};
 }
 
 function movUp() {
 	
-	if(xCoord === endX && yCoord === endY) {
+	if(xCoord === endX && yCoord === (endY +1)) {
+        yCoord--;
+        hideAbe(0,1);
         killAbe();
 	   alert("WhuuThe!!??");
     }
@@ -74,15 +63,17 @@ function movUp() {
 	}
 	else {
 		yCoord--;
-		hideAbeUp();
+		hideAbe(0, 1);
 		movAbe();
 	};
 }
 
 function movLeft() {
 	
-	if(xCoord === endX && yCoord === endY) {
-        killAbe();
+	if(xCoord === (endX + 1) && yCoord === endY) {
+       xCoord--;
+       hideAbe(1,0);
+       killAbe();
 	   alert("WhuuThe!!??");
     }
 	else if (xCoord === 0){
@@ -90,7 +81,7 @@ function movLeft() {
 	}
 	else {
 		xCoord--;
-		hideAbeLeft();
+		hideAbe(1,0);
 		movAbe();
 	};
 }
@@ -99,7 +90,7 @@ function movRight() {
 	
 	if(xCoord === (endX - 1) && yCoord === endY) {
         xCoord++;
-        hideAbeRight();
+        hideAbe(-1,0);
         killAbe();
 	   alert("WhuuThe!!??");
     }
@@ -108,13 +99,13 @@ function movRight() {
 	}
 	else {
 		xCoord++;
-        hideAbeRight();
+        hideAbe(-1,0);
 		movAbe();
 	};
 }
 
 function reset() {
-    hideAbeNow();
+    hideAbe(0,0);
     xCoord = 0;
     yCoord = 0;
     movAbe();
