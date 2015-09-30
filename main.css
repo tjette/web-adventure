@@ -11,7 +11,19 @@
 	left: auto
 	right: auto;
 }
-​.dpad {
-	left: auto;
-	right: auto;
+#up {
+	position: relative;
+	top: 0;
+}
+#down {
+    position: relative;
+    bottom: 0;
+}
+#left {
+    position: relative;
+    left: 0;
+}
+#right {
+    position: relative;
+    left: 0;
 }
