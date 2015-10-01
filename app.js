@@ -25,84 +25,52 @@ var hideAbe = function (xChange, yChange) {
 	document.getElementById((yCoord + yChange).toString() + (xCoord + xChange).toString()).innerHTML = "";
 }
 
+var holdon = new Audio('holdon.wav');
+var coon = new Audio('racoon.wav');
+var dead = new Audio('dead.wav')
+
 
 movAbe();
 target();
 
-
-
-function movDown() {
+function mov(xDel, yDel, x, y, bound) {
 	
-	
-	if(xCoord === endX && yCoord === (endY -1)) {
-        yCoord++;
-        hideAbe(0, -1);	
+	if(xCoord === (endX + xDel) && yCoord === (endY + yDel)) {
+        xCoord += x;
+        yCoord += y;
+        hideAbe(xDel, yDel);	
         killAbe();
+        dead.play();
         alert("Whuuthaa!!??");
 	}
-	else if (yCoord === 2) {
+	else if (yCoord === bound && yDel != 0) {
+        holdon.play();
+        alert("D'oh!!!");
+    }
+    else if (xCoord === bound && xDel != 0) {
+        coon.play();
         alert("D'oh!!!");
     }
         else {
-        yCoord++;
-		hideAbe(0, -1);
+        xCoord += x;
+        yCoord += y;
+		hideAbe(xDel, yDel);
 		movAbe();
 	};
 }
 
+function movDown() {
+	mov(0, -1, 0, 1, 2);
+}; 
 function movUp() {
-	
-	if(xCoord === endX && yCoord === (endY +1)) {
-        yCoord--;
-        hideAbe(0,1);
-        killAbe();
-	   alert("WhuuThe!!??");
-    }
-	else if (yCoord === 0){
-		alert("D'oh!!!");
-	}
-	else {
-		yCoord--;
-		hideAbe(0, 1);
-		movAbe();
-	};
-}
-
+	mov(0, 1, 0, -1, 0);
+}; 
 function movLeft() {
-	
-	if(xCoord === (endX + 1) && yCoord === endY) {
-       xCoord--;
-       hideAbe(1,0);
-       killAbe();
-	   alert("WhuuThe!!??");
-    }
-	else if (xCoord === 0){
-		alert("D'oh!!!");
-	}
-	else {
-		xCoord--;
-		hideAbe(1,0);
-		movAbe();
-	};
-}
-
+	mov(1, 0, -1, 0, 0);
+}; 
 function movRight() {
-	
-	if(xCoord === (endX - 1) && yCoord === endY) {
-        xCoord++;
-        hideAbe(-1,0);
-        killAbe();
-	   alert("WhuuThe!!??");
-    }
-	else if (xCoord === 2){
-		alert("Don't have cow, man!");
-	}
-	else {
-		xCoord++;
-        hideAbe(-1,0);
-		movAbe();
-	};
-}
+	mov(-1, 0, 1, 0, 2);
+};
 
 function reset() {
     hideAbe(0,0);
@@ -111,3 +79,77 @@ function reset() {
     movAbe();
     target();
 }
+//function movDown() {
+//	
+//	
+//	if(xCoord === endX && yCoord === (endY -1)) {
+//        yCoord++;
+//        hideAbe(0, -1);	
+//        killAbe();
+//        alert("Whuuthaa!!??");
+//	}
+//	else if (yCoord === 2) {
+//        alert("D'oh!!!");
+//    }
+//        else {
+//        yCoord++;
+//		hideAbe(0, -1);
+//		movAbe();
+//	};
+//}
+//
+//function movUp() {
+//	
+//	if(xCoord === endX && yCoord === (endY +1)) {
+//        yCoord--;
+//        hideAbe(0,1);
+//        killAbe();
+//	   alert("WhuuThe!!??");
+//    }
+//	else if (yCoord === 0){
+//		alert("D'oh!!!");
+//	}
+//	else {
+//		yCoord--;
+//		hideAbe(0, 1);
+//		movAbe();
+//	};
+//}
+//
+//function movLeft() {
+//	
+//	if(xCoord === (endX + 1) && yCoord === endY) {
+//       xCoord--;
+//       hideAbe(1,0);
+//       killAbe();
+//	   alert("WhuuThe!!??");
+//    }
+//	else if (xCoord === 0){
+//		alert("D'oh!!!");
+//	}
+//	else {
+//		xCoord--;
+//		hideAbe(1,0);
+//		movAbe();
+//	};
+//}
+//
+//function movRight() {
+//	
+//	if(xCoord === (endX - 1) && yCoord === endY) {
+//        xCoord++;
+//        hideAbe(-1,0);
+//        killAbe();
+//	   alert("WhuuThe!!??");
+//    }
+//	else if (xCoord === 2){
+//		alert("Don't have cow, man!");
+//	}
+//	else {
+//		xCoord++;
+//        hideAbe(-1,0);
+//		movAbe();
+//	};
+//}
+
+
