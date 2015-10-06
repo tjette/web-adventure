@@ -55,3 +55,7 @@ function generate_table() {
   tbl.setAttribute("border", "3");
   //tbl.setAttribute("background-color", "bC");
 }
+
+// generate_table() {
+	
+// }
